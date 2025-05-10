@@ -47,7 +47,7 @@ if (
 ) {
   // Login bem-sucedido
   alert("Login realizado com sucesso!");
-  localStorage.setItem('UserPass', true)
+  localStorage.setItem('UserPass', true) 
   window.location.href = "Pages/inicio.html";
   return true;
 } else {
