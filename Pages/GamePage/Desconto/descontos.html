@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Painel de login seguro">
+  <!-- Adicionada meta description para SEO -->
+  <title>Synapse - Descontos</title>
+  <link rel="stylesheet" href="../../Main/style.css">
+  <link rel="stylesheet" href="descontos.css">
+</head>
+
+<body>
+  <div class="dark-bg" id="overlay">
+    <div class="popup" id="popup">
+      <span class="fechar-popup" style="position:absolute;top:10px;right:10px;cursor:pointer;">✖</span>
+      <div>
+      <div class="popup-header">
+        <img id="popup-img" src="" alt="" loading="lazy" class="popup-cover"/>
+        <div class="popup-tags">
+          <span id="loja"></span>
+          <span id="desconto"></span>
+        </div>
+      </div>
+      <div class="popup-info">
+        <h3 id="Titulo" class="popup-title"></h3>
+        <div class="popup-pricing">
+          <span id="precoAntigo" class="preco-antigo"></span>
+          <span id="precoNovo" class="preco-novo"></span>
+        </div>
+        
+      </div>
+      <div class="popup-description">
+        <div class="popup-description-group">
+          <span class="popup-label">Desenvolvedora:</span>
+          <span id="desenvolvedores" class="popup-value"></span>
+        </div>
+        <div class="popup-description-group">
+          <span class="popup-label">Gêneros:</span>
+          <span id="generos" class="popup-value"></span>
+        </div>
+        <div class="popup-description-group">
+          <span class="popup-label">Descrição:</span>
+          <span id="descricao" class="popup-value"></span>
+        </div>
+      </div>
+      <a id="linkOferta" class="btn btn-oferta"  rel="noopener" target="_blank">Ver Oferta</a>
+    </div>
+      <hr class="popup-divider" />
+      <div class="popup-charts">
+        <div id="chart-preco-wrap" class="chart-placeholder shimmer">
+          <span class="chart-label">Gráfico de Preço</span>
+          <canvas id="grafico-precos"></canvas>
+        </div>
+        <div id="chart-jogadores-wrap" class="chart-placeholder shimmer">
+          <span class="chart-label">Jogadores</span>
+          <canvas id="grafico-jogadores"></canvas>
+        </div>
+        <div id="chart-avaliacao-wrap" class="chart-placeholder shimmer">
+          <span class="chart-label">Avaliação</span>
+          <canvas id="grafico-avaliacao"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <header>
+    <div class="menu" role="banner">
+      <!-- Adicionado role para acessibilidade -->
+      <img src="../../../assets/img/logo.png" width="250px" alt="">
+      <ul>
+        <li><a href="../../inicio.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+              <path
+                d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
+            </svg> Inicio</a></li>
+      <!--  <li><a href="../Noticias/noticias.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              fill="currentColor" class="bi bi-newspaper" viewBox="0 0 16 16">
+              <path
+                d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5z" />
+              <path
+                d="M2 3h10v2H2zm0 3h4v3H2zm0 4h4v1H2zm0 2h4v1H2zm5-6h2v1H7zm3 0h2v1h-2zM7 8h2v1H7zm3 0h2v1h-2zm-3 2h2v1H7zm3 0h2v1h-2zm-3 2h2v1H7zm3 0h2v1h-2z" />
+            </svg> Noticias</a> </li> -->
+        <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-joystick" viewBox="0 0 16 16">
+              <path
+                d="M10 2a2 2 0 0 1-1.5 1.937v5.087c.863.083 1.5.377 1.5.726 0 .414-.895.75-2 .75s-2-.336-2-.75c0-.35.637-.643 1.5-.726V3.937A2 2 0 1 1 10 2" />
+              <path
+                d="M0 9.665v1.717a1 1 0 0 0 .553.894l6.553 3.277a2 2 0 0 0 1.788 0l6.553-3.277a1 1 0 0 0 .553-.894V9.665c0-.1-.06-.19-.152-.23L9.5 6.715v.993l5.227 2.178a.125.125 0 0 1 .001.23l-5.94 2.546a2 2 0 0 1-1.576 0l-5.94-2.546a.125.125 0 0 1 .001-.23L6.5 7.708l-.013-.988L.152 9.435a.25.25 0 0 0-.152.23" />
+            </svg> Jogos com descontos</a> </li>
+       <!-- <li><a href="../Mods/mods.html"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              fill="currentColor" class="bi bi-bricks" viewBox="0 0 16 16">
+              <path
+                d="M0 .5A.5.5 0 0 1 .5 0h15a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5H14v2h1.5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5H14v2h1.5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5H2v-2H.5a.5.5 0 0 1-.5-.5v-3A.5.5 0 0 1 .5 6H2V4H.5a.5.5 0 0 1-.5-.5zM3 4v2h4.5V4zm5.5 0v2H13V4zM3 10v2h4.5v-2zm5.5 0v2H13v-2zM1 1v2h3.5V1zm4.5 0v2h5V1zm6 0v2H15V1zM1 7v2h3.5V7zm4.5 0v2h5V7zm6 0v2H15V7zM1 13v2h3.5v-2zm4.5 0v2h5v-2zm6 0v2H15v-2z" />
+            </svg> Mods em Destaque</a></li> -->
+      </ul>
+    </div>
+  </header>
+  <main>
+    <div id="particles-js"></div>
+    <section class="section-container" id="lista-todos-jogos">
+      <div id="filtros">
+        <div class="filtro-buscar">
+          <span><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align: -.125em;" width="16" height="16"
+              fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg></span>
+          <input type="text" id="filtro-nome" placeholder="Buscar por nome..." />
+        </div>
+        <select id="filtro-ordenacao">
+          <option value="padrao">Ordenar por</option>
+          <option value="preco-menor">Preço menor</option>
+          <option value="preco-maior">Preço maior</option>
+          <option value="populares">Jogos populares</option>
+          <option value="novos">Jogos novos</option>
+          <option value="gratuitos">Jogos gratuitos</option>
+        </select>
+      </div>
+      <div class="container" id="lista-jogos-com-desconto"></div>
+      <div id="paginacao" class="paginacao"></div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-content">
+      <!-- Adicionada classe para estilização -->
+      <!-- Conteúdo do rodapé pode ser adicionado aqui -->
+    </div>
+    <div class="theme-switcher">
+      <!-- Renomeado para melhor semântica -->
+      <button type="button" id="themeToggleBtn" class="theme-btn" aria-label="Alternar tema">
+        <!-- Adicionado aria-label para acessibilidade -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half"
+          viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16" />
+        </svg>
+      </button>
+      <div id="themeMenu" class="theme-menu">
+        <!-- Renomeado para consistência -->
+        <a href="#" data-theme="Light" class="theme-option">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+            class="bi bi-brightness-high-fill" viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708" />
+          </svg>
+          Claro
+        </a>
+        <a href="#" data-theme="Dark" class="theme-option">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+            class="bi bi-moon-stars-fill" viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278" />
+            <path
+              d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.73 1.73 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.73 1.73 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.73 1.73 0 0 0 1.097-1.097z" />
+            <path
+              d="M13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z" />
+          </svg>
+          Escuro
+        </a>
+        <a href="#" data-theme="Auto" class="theme-option">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half"
+            viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16" />
+          </svg>
+          Auto
+        </a>
+      </div>
+    </div>
+    <input type="checkbox" id="theme-switch" class="visually-hidden">
+    <!-- Renomeado para consistência e adicionada classe para acessibilidade -->
+  </footer>
+  <script src="../../../Js/tema.js"></script>
+  <script src="../../../Js/Pages/jogos.js"></script>
+  <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Função para inicializar as partículas com cor dinâmica
+    function initParticles(color) {
+      // Remove partículas antigas, se houver
+      if (window.pJSDom && window.pJSDom.length) {
+        window.pJSDom[0].pJS.fn.vendors.destroypJS();
+        window.pJSDom = [];
+      }
+      particlesJS('particles-js', {
+        particles: {
+          number: { value: 60 },
+          color: { value: color },
+          shape: { type: 'circle' },
+          opacity: { value: 0.5 },
+          size: { value: 3 },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: color,
+            opacity: 0.4,
+            width: 1
+          },
+          move: { enable: true, speed: 2 }
+        },
+        interactivity: {
+          detect_on: 'canvas',
+          events: {
+            onhover: { enable: true, mode: 'repulse' }
+          }
+        },
+        retina_detect: true
+      });
+    }
+
+    // Função para obter a cor das partículas baseada no tema
+    function getParticlesColorByTheme(theme) {
+      // Adapte conforme suas classes ou lógica
+      return theme === 'Dark' ? '#ffffff' : '#000000'; // branco no escuro, azul no claro
+    }
+
+    // Chame isso ao trocar de tema:
+    function onThemeChange(theme) {
+      // ...sua lógica de tema...
+      initParticles(getParticlesColorByTheme(theme));
+    }
+
+    // Exemplo de integração com seu sistema de tema:
+    document.querySelectorAll('.theme-option').forEach(option => {
+      option.addEventListener('click', function (e) {
+        e.preventDefault();
+        const theme = this.getAttribute('data-theme');
+        // ...aplica o tema normalmente...
+        onThemeChange(theme);
+      });
+    });
+
+    // Inicialização ao carregar a página:
+    document.addEventListener('DOMContentLoaded', function () {
+      // Detecta tema atual
+      let theme = localStorage.getItem('theme') || 'Light';
+      if (theme === 'Auto') {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'Dark' : 'Light';
+      }
+      initParticles(getParticlesColorByTheme(theme));
+
+      if (!localStorage.getItem('UserPass')) {
+        window.location.href = '../../../index.html';
+      }
+    });
+  </script>
+
+  <script>
+function renderizarGraficoPreco(precoAntigo, precoNovo, precoMaisBaixo) {
+  // Destroi gráfico antigo, se existir
+  if (chartPreco) {
+    chartPreco.destroy();
+    chartPreco = null;
+  }
+  const ctx = document.getElementById("grafico-precos").getContext("2d");
+  chartPreco = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: ["Preço Anterior", "Preço Atual", "Menor Preço Histórico"],
+      datasets: [
+        {
+          label: "Preço (R$)",
+          data: [precoAntigo, precoNovo, precoMaisBaixo],
+          borderColor: '#293cb6',
+          backgroundColor: '#445ae672',
+          tension: 0.3,
+          fill: true
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: (context) => `R$ ${context.raw.toFixed(2)}`,
+          },
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: (value) => `R$ ${value.toFixed(2)}`,
+          },
+        },
+      },
+    },
+  });
+}
+function renderizarGraficoJogadores(PlayerRecent, PlayerDay, PlayerWeek, PlayerPeak) {
+  if (chartJogadores) {
+    chartJogadores.destroy();
+    chartJogadores = null;
+  }
+  const ctx = document.getElementById("grafico-jogadores").getContext("2d");
+  chartJogadores = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Últimas 24h", "Hoje", "Últimos 7 dias", "Pico"],
+      datasets: [
+        {
+          label: "Jogadores",
+          data: [PlayerRecent, PlayerDay, PlayerWeek, PlayerPeak],
+          backgroundColor: '#4caf50'
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: (context) => `${context.raw.toLocaleString()} jogadores`,
+          },
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: (value) => value.toLocaleString(),
+          },
+        },
+      },
+    },
+  });
+}
+function renderizarGraficoAvaliação(Steam, SteamCount, Metascore, MetascoreCount, Metacritic, MetacriticCount) {
+  if (chartAvaliacao) {
+    chartAvaliacao.destroy();
+    chartAvaliacao = null;
+  }
+  const ctx = document.getElementById("grafico-avaliacao").getContext("2d");
+  chartAvaliacao = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Steam", "Metascore", "Metacritic"],
+      datasets: [
+        {
+          label: "Nota",
+          data: [Steam, Metascore, Metacritic],
+          backgroundColor: ['#1b89e0', '#f1c40f', '#e74c3c']
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: (context) => `Nota: ${context.raw}/100`,
+          },
+        },
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 100,
+          ticks: {
+            callback: (value) => `${value}/100`,
+          },
+        },
+      },
+    },
+  });
+}
+  </script>
+</body>
+
+</html>

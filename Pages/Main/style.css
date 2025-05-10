@@ -1,0 +1,495 @@
+:root {
+  --primary-color: #293cb6;
+  --second-color: #445ae6;
+  --text-color: #000000;
+  --text-color-light: #ffffff;
+  --bg-color: #ffffff;
+  --bg-card-color: #f1f1f1;
+  --border-color: #adacac8d;
+  --error-color: #e74c3c; /* Adicionada cor para mensagens de erro */
+  --radius: 8px;
+  --font-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  --transition: all 0.3s ease;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); /* Adicionada sombra padrão */
+}
+
+/* Transições suaves para troca de tema */
+body,
+.container,
+.section-container,
+.theme-menu,
+.theme-btn {
+  transition: var(--transition);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-main);
+  min-height: 100vh;
+  transition: var(--transition);
+}
+svg,
+img {
+  pointer-events: none;
+}
+/* Cabeçalho */
+header {
+  display: flex;
+  justify-content: center;
+  padding: 6px;
+  background: var(--bg-card-color);
+}
+
+header h1 {
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  margin-bottom: 16px; /* Aumentado para melhor espaçamento */
+  font-size: 1.5rem; /* Tamanho mais adequado */
+}
+
+/* Conteúdo principal */
+main {
+  flex: 1; /* Ocupa espaço disponível */
+}
+
+/* Containers */
+.section-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem; /* Espaçamento mais consistente */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  padding: 2rem;
+  background: var(--bg-card-color);
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  max-width: 400px; /* Largura máxima definida */
+  z-index: 1;
+}
+
+/* Formulário */
+form {
+  width: 100%;
+}
+
+/* Inputs e Floating Labels */
+.input-login {
+  position: relative;
+  margin-bottom: 24px; /* Aumentado para acomodar mensagens de erro */
+  width: 100%;
+  display: flex;
+  gap: 20px;
+}
+
+.input-info {
+  width: 100%;
+  padding: 14px 10px 6px 10px;
+  border: 0;
+  border-bottom: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-color);
+  outline: none;
+  font-size: 16px;
+  transition: border-color 0.3s; /* Transição suave */
+}
+
+.input-info:focus {
+  border-bottom: 1.5px solid var(--primary-color);
+}
+
+.input-info:invalid:not(:placeholder-shown):not(:focus) {
+  border-bottom: 1.5px solid var(--error-color); /* Indicação visual de erro */
+}
+
+.input-label {
+  position: absolute;
+  top: 13px;
+  left: 12px;
+  color: #888;
+  font-size: 16px;
+  pointer-events: none;
+  background: transparent;
+  padding: 0 4px;
+  transition: var(--transition);
+}
+
+.input-info:focus + .input-label,
+.input-info:not(:placeholder-shown) + .input-label {
+  top: -10px;
+  left: 8px;
+  font-size: 12px;
+  color: var(--primary-color);
+}
+
+.input-info:invalid:not(:placeholder-shown):not(:focus) + .input-label {
+  color: var(--error-color); /* Cor de erro para o label */
+}
+
+/* Mensagens de erro */
+.error-message {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  font-size: 12px;
+  color: var(--error-color);
+  transition: opacity 0.3s;
+}
+
+/* Checkbox Animado */
+.checkbox-animado {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  position: relative;
+}
+
+.checkbox-animado input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.checkbox-animado label {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  user-select: none;
+  color: var(--text-color);
+  transition: color 0.2s;
+}
+
+.checkbox-animado label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+  background: #fff;
+  box-sizing: border-box;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.checkbox-animado input[type="checkbox"]:checked + label::before {
+  border-color: var(--primary-color); /* Usando variável para consistência */
+  background: var(--primary-color);
+}
+
+.checkbox-animado label::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 9px;
+  width: 12px;
+  height: 6px;
+  border-left: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  opacity: 0;
+  transform: scale(0) rotate(-45deg);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.checkbox-animado input[type="checkbox"]:checked + label::after {
+  opacity: 1;
+  transform: scale(1) rotate(-45deg);
+}
+
+/* Botões */
+.btn {
+  padding: 10px 20px; /* Aumentado para melhor clicabilidade */
+  border: 1px solid var(--border-color);
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  margin: 8px 4px 0 0;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  font-size: 16px;
+  cursor: pointer; /* Cursor de ponteiro para botões */
+  font-weight: 500; /* Peso da fonte para melhor legibilidade */
+  text-decoration: unset;
+}
+
+.btn:hover {
+  background-color: var(--second-color);
+  transform: translateY(-2px); /* Efeito sutil ao passar o mouse */
+}
+
+.btn:active {
+  transform: translateY(0); /* Retorna à posição original ao clicar */
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(68, 90, 230, 0.1);
+}
+
+.login-actions {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column; /* Empilha os botões em telas pequenas */
+  gap: 10px;
+}
+
+/* Checkbox para mostrar/esconder senha */
+.checkbox-eye {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-eye input[type="checkbox"] {
+  display: none;
+}
+
+.mostrar-senha-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 15px;
+  gap: 6px;
+  user-select: none;
+}
+
+.eye-icon {
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+
+.eye-icon svg {
+  fill: var(--primary-color);
+}
+
+.checkbox-eye input[type="checkbox"]:checked + .mostrar-senha-label .open-eye {
+  display: none;
+}
+
+.checkbox-eye
+  input[type="checkbox"]:checked
+  + .mostrar-senha-label
+  .closed-eye {
+  display: inline !important;
+}
+
+.checkbox-eye
+  input[type="checkbox"]:not(:checked)
+  + .mostrar-senha-label
+  .open-eye {
+  display: inline !important;
+}
+
+.checkbox-eye
+  input[type="checkbox"]:not(:checked)
+  + .mostrar-senha-label
+  .closed-eye {
+  display: none;
+}
+
+/* Seletor de tema */
+.theme-switcher {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  z-index: 10;
+}
+
+.theme-btn {
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-btn:hover,
+.theme-btn:focus {
+  background-color: var(--second-color);
+}
+
+.theme-menu {
+  opacity: 0;
+  visibility: hidden;
+  background-color: var(--bg-card-color);
+  min-width: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius);
+  transition: var(--transition);
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  transform: translateY(10px);
+}
+
+.theme-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.theme-option {
+  color: var(--text-color);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.2s;
+}
+
+.theme-option:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Utilitários para acessibilidade */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Tema escuro */
+.dark-mode {
+  --bg-color: #181a1b;
+  --bg-card-color: #282828;
+  --text-color: #e4e4e4;
+  --border-color: #444444;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+  .login-actions {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .btn {
+    flex: 1;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .btn {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .theme-btn {
+    padding: 12px;
+  }
+}
+
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+} /* ---- particles.js container ---- */
+#particles-js {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card-color);
+  padding: 0.7rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(41,60,182,0.04);
+  gap: 10px;
+}
+
+.menu img {
+  height: 48px;
+  width: auto;
+  border-radius: 8px;
+}
+
+.menu ul {
+  display: flex;
+  gap: 18px;
+  list-style: none;
+}
+
+.menu a {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.05rem;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  transition: background 0.15s, color 0.15s;
+  position: relative;
+}
+
+.menu a:hover,
+.menu a:focus {
+  background: var(--primary-color);
+  color: var(--text-color-light);
+}

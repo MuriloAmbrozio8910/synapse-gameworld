@@ -1,0 +1,298 @@
+.container {
+  max-width: unset;
+}
+.card {
+  background: var(--bg-card-color);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  width: 330px;
+  padding: 1.2rem 1rem 1.2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.card img {
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  background: #e3e6f0;
+}
+
+.card h3 {
+  font-size: 1.12rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.card p {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.card .btn {
+  align-self: flex-end;
+  margin-top: 0.5rem;
+}
+
+.card:hover {
+  box-shadow: 0px 8px 32px 0px var(--primary-color), var(--shadow-sm);
+  transform: translateY(-8px) scale(1.03);
+  border-color: var(--primary-color);
+}
+
+.tag {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: var(--primary-color);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: var(--radius);
+  font-size: 0.83rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 8px rgba(41, 60, 182, 0.1);
+}
+
+.desconto {
+  background: var(--error-color);
+  top: 48px;
+  right: 16px;
+  font-weight: 700;
+}
+.plataforma-steam {
+  background-color: #171a21;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-epic {
+  background-color: #313131;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/3/31/Epic_Games_logo.svg");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-gog {
+  background-color: #863dff;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/13/GOG.com_Logo_2018.svg");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-nuuvem {
+  background-color: #2b8bc6;
+  background-image: url("https://www.nuuvem.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-greenmangaming {
+  background-color: #5ecf4e;
+  background-image: url("https://www.greenmangaming.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-2game {
+  background-color: #ff6b6b;
+  background-image: url("https://2game.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-gamebillet {
+  background-color: #444b59;
+  background-image: url("https://www.gamebillet.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-fanatical {
+  background-color: #f36f21;
+  background-image: url("https://www.fanatical.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-gamesplanet-us {
+  background-color: #0070cc;
+  background-image: url("https://us.gamesplanet.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-gamesplanet-uk {
+  background-color: #003b7a;
+  background-image: url("https://uk.gamesplanet.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-ea-store {
+  background-color: #ff4c00;
+  background-image: url("https://www.ea.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-humble-store {
+  background-color: #383838;
+  background-image: url("https://www.humblebundle.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-noctre {
+  background-color: #000000;
+  background-image: url("https://noctre.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-microsoft-store {
+  background-color: #00adef;
+  background-image: url("https://www.microsoft.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-wingamestore {
+  background-color: #1e2e46;
+  background-image: url("https://www.wingamestore.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-gamesload {
+  background-color: #1a1a1a;
+  background-image: url("https://www.gamesload.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-gamersgate {
+  background-color: #003366;
+  background-image: url("https://www.gamersgate.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-indiegala-store {
+  background-color: #d63636;
+  background-image: url("https://www.indiegala.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-ubisoft-store {
+  background-color: #000000;
+  background-image: url("https://store.ubi.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+#graficoDolar,
+#grafico-precos {
+  max-width: 700px;
+  max-height: 285px;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+@media (max-width: 900px) {
+  .container {
+    gap: 1.2rem;
+  }
+  .card {
+    width: 95vw;
+    max-width: 360px;
+  }
+  .popup img {
+    max-width: 95vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0.7rem 0.5rem;
+  }
+  .menu a{
+    font-size: 14px;
+  }
+  .section-container {
+    padding: 1.2rem 0.3rem 0.5rem 0.3rem;
+  }
+  .card {
+    padding: 0.7rem 0.5rem;
+    width: 98vw;
+    max-width: 99vw;
+    margin-bottom: 10px;
+  }
+  .popup {
+    padding: 1.2rem 0.5rem;
+    min-width: 0;
+    flex-direction: column;
+  }
+}
+.preco-antigo {
+  color: #a2a3a4;
+  text-decoration: line-through;
+}
+.preco-novo {
+  font-weight: bold;
+}
+.popup-pricing {
+  display: flex;
+  gap: 10px;
+}

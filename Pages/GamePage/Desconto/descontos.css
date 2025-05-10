@@ -1,0 +1,475 @@
+:root {
+  --primary-color: #293cb6;
+  --second-color: #445ae6;
+  --text-color: #000000;
+  --text-color-light: #ffffff;
+  --bg-color: #ffffff;
+  --bg-card-color: #f1f1f1;
+  --border-color: #adacac8d;
+  --error-color: #e74c3c; /* Adicionada cor para mensagens de erro */
+  --radius: 8px;
+  --font-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  --transition: all 0.3s ease;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); /* Adicionada sombra padrão */
+}
+
+.dark-mode {
+  --bg-color: #181a1b;
+  --bg-card-color: #282828;
+  --text-color: #e4e4e4;
+  --border-color: #444444;
+}
+.card {
+  background: var(--bg-card-color);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  width: 330px;
+  padding: 1.2rem 1rem 1.2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.card img {
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  background: #e3e6f0;
+}
+
+.card h3 {
+  font-size: 1.12rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.card p {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.card .btn {
+  align-self: flex-end;
+  margin-top: 0.5rem;
+}
+
+.card:hover {
+  box-shadow: 0px 8px 32px 0px var(--primary-color), var(--shadow-sm);
+  transform: translateY(-8px) scale(1.03);
+  border-color: var(--primary-color);
+}
+
+.tag {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: var(--primary-color);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: var(--radius);
+  font-size: 0.83rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 8px rgba(41, 60, 182, 0.1);
+}
+
+.desconto {
+  background: var(--error-color);
+  top: 48px;
+  right: 16px;
+  font-weight: 700;
+}
+
+.section-container {
+  max-width: unset;
+}
+.container {
+  width: 100%;
+  max-width: none;
+  display: flex;
+  max-height: 93vh;
+  overflow-y: scroll;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 2rem 2rem 4rem 2rem;
+}
+
+.plataforma-steam {
+  background-color: #171a21;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-epic {
+  background-color: #313131;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/3/31/Epic_Games_logo.svg");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-gog {
+  background-color: #863dff;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/13/GOG.com_Logo_2018.svg");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-nuuvem {
+  background-color: #2b8bc6;
+  background-image: url("https://www.nuuvem.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-greenmangaming {
+  background-color: #5ecf4e;
+  background-image: url("https://www.greenmangaming.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-2game {
+  background-color: #ff6b6b;
+  background-image: url("https://2game.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-gamebillet {
+  background-color: #444b59;
+  background-image: url("https://www.gamebillet.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-fanatical {
+  background-color: #f36f21;
+  background-image: url("https://www.fanatical.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-gamesplanet-us {
+  background-color: #0070cc;
+  background-image: url("https://us.gamesplanet.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-gamesplanet-uk {
+  background-color: #003b7a;
+  background-image: url("https://uk.gamesplanet.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-ea-store {
+  background-color: #ff4c00;
+  background-image: url("https://www.ea.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-humble-store {
+  background-color: #383838;
+  background-image: url("https://www.humblebundle.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-noctre {
+  background-color: #000000;
+  background-image: url("https://noctre.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-microsoft-store {
+  background-color: #00adef;
+  background-image: url("https://www.microsoft.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-wingamestore {
+  background-color: #1e2e46;
+  background-image: url("https://www.wingamestore.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-gamesload {
+  background-color: #1a1a1a;
+  background-image: url("https://www.gamesload.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-gamersgate {
+  background-color: #003366;
+  background-image: url("https://www.gamersgate.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-indiegala-store {
+  background-color: #d63636;
+  background-image: url("https://www.indiegala.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.plataforma-ubisoft-store {
+  background-color: #000000;
+  background-image: url("https://store.ubi.com/favicon.ico");
+  background-repeat: no-repeat;
+  background-position: 8px center;
+  background-size: 16px 16px;
+  padding-left: 28px;
+}
+
+.paginacao {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  z-index: 1;
+  padding: 10px;
+  border-radius: var(--radius);
+  position: relative;
+  bottom: 55px;
+}
+.paginacao .btn {
+  margin: unset;
+}
+.paginacao button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.paginacao .ativo {
+  background-color: #333;
+  color: white;
+  font-weight: bold;
+}
+#filtros {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+#filtros select {
+  border: 1px solid var(--border-color);
+  background: var(--bg-card-color);
+  color: var(--text-color);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: var(--radius);
+}
+.filtro-buscar {
+  border: 1px solid var(--border-color);
+  background: var(--bg-card-color);
+  color: var(--text-color);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: var(--radius);
+  display: flex;
+  gap: 10px;
+  min-width: 100px;
+  max-width: 340px;
+  width: 100%;
+}
+#filtros input {
+  background: transparent;
+  border: none;
+  width: 100%;
+  color: var(--text-color);
+}
+#filtros input:focus {
+  outline: none;
+}
+.dark-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9998;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+.dark-bg.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-card-color);
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border-color);
+  box-shadow: 0 8px 32px 0 rgba(41, 60, 182, 0.2), var(--shadow-sm);
+  z-index: 9999;
+  min-width: 340px;
+  max-width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  display: flex;
+  gap: 1.2rem;
+}
+
+.popup.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup .fechar-popup {
+  font-size: 1.5rem;
+  color: var(--error-color);
+  background: none;
+  border: none;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  cursor: pointer;
+  z-index: 1;
+  transition: var(--transition);
+}
+.popup .fechar-popup:hover {
+  color: var(--primary-color);
+}
+
+.popup img {
+  width: 100%;
+  max-width: 425px;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+.popup .tag {
+  position: unset;
+}
+.popup-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.popup-tags {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.popup-description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.popup .btn {
+  display: flex;
+  justify-content: center;
+}
+.preco-antigo {
+  color: #a2a3a4;
+  text-decoration: line-through;
+}
+.preco-novo {
+  font-weight: bold;
+}
+.popup-pricing {
+  display: flex;
+  gap: 10px;
+}
+canvas {
+  margin-top: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 1px 4px rgba(41, 60, 182, 0.06);
+}
+@media (max-width: 900px) {
+  .container {
+    gap: 1.2rem;
+  }
+  .card {
+    width: 95vw;
+    max-width: 360px;
+  }
+  .popup img {
+    max-width: 95vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0.7rem 0.5rem;
+  }
+  .section-container {
+    padding: 1.2rem 0.3rem 0.5rem 0.3rem;
+  }
+  .container {
+    padding: 0;
+  }
+  .card {
+    padding: 0.7rem 0.5rem;
+    width: 98vw;
+    max-width: 99vw;
+  }
+  .popup {
+    padding: 1.2rem 0.5rem;
+    min-width: 0;
+    flex-direction: column;
+  }
+}
